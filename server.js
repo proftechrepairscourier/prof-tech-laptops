@@ -25,8 +25,14 @@ const app = express();
 // Security
 app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
 app.use(cors({
-  origin:['http://localhost:5173', 'http://127.0.0.1:5173'],
+   origin: [
+    'https://prof-tech-laptops-client-v2-lemon.vercel.app',
+    'http://localhost:5173',
+    'http://localhost:5174'
+  ],
   credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
