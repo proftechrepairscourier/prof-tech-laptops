@@ -38,6 +38,7 @@ export const getLaptops = async (req, res) => {
     if (generation) query.generation = { $regex: generation, $options: 'i' };
     if (gpu) query.gpu = { $regex: gpu, $options: 'i' };
     if (condition) query.condition = { $regex: condition, $options: 'i' };
+    if (req.query.productType) query.productType = req.query.productType;
 
     let sortOption = { createdAt: -1 };
     if (sort === 'price_asc') sortOption = { price: 1 };

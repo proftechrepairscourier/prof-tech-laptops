@@ -5,7 +5,15 @@ const laptopSchema = new mongoose.Schema(
     brand: { type: String, required: true, trim: true },
     model: { type: String, required: true, trim: true },
     slug: { type: String, required: true, unique: true, index: true },
-
+    productType: { 
+      type: String, 
+      enum: ['laptop', 'phone'], 
+      default: 'laptop',
+      index: true 
+    },
+    battery: { type: String, trim: true },
+    camera: { type: String, trim: true },
+    simSlots: { type: String, trim: true },
     categories: {
       type: [String],
       enum: ['students', 'office', 'gaming', 'engineering'],
@@ -45,6 +53,8 @@ laptopSchema.index({
   model: 'text',
   processor: 'text',
   generation: 'text',
+  battery: 'text',
+  camera: 'text',
   description: 'text',
 });
 
